@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %}
+    List Form 
+{% endblock title %}
+
+{% block content %}
+<h1 class="text-center mt-4">Welcome to Blog List  </h1>
+<a href="{% url 'home' %}">Insert Form</a>
+<div class="container row gap-3">
+    {% for i in all_data %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{ i.title }}</h5>
+            <p class="card-text">{{ i.content }}</p>
+            <p class="card-text">{{ i.timestamp }}</p>
+            <a href="{% url 'edit' i.id %}" class="btn btn-primary">EditPage</a>
+            <a href="{% url 'delete' i.id %}" class="btn btn-primary">DeletePage</a>
+           
+        </div> 
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
